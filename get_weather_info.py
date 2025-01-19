@@ -20,6 +20,8 @@ def get_info(location, temp_type = 'celsius')->Dict:
         weather['humidity'] = r_t['humidity']
     return weather
 
-def get_weather_table(location, temp_type):
-    weather_info = pd.DataFrame(get_info(location, temp_type))
+def get_weather_table(location):
+    temp_type = input('Please, choose temperature unit (Celsius or Fahrenheit): ')
+    weather_dict = get_info(location, temp_type)
+    weather_info = pd.DataFrame(weather_dict, index = weather_dict.keys())
     print(weather_info)

@@ -1,4 +1,4 @@
-from get_weather_info import get_info
+from get_weather_info import get_weather_table
 
 
 def get_location_data():
@@ -6,7 +6,8 @@ def get_location_data():
     zip_code = input('Please, enter a zip code if you know or skip: ')
 
     if not (city or zip_code):
-        print('Not a valid data provided.', '\n')
+        print('Not a valid data provided.')
+        print('Please try once more', '\n')
 
     return city if city else zip_code
 
@@ -14,5 +15,4 @@ if __name__ == '__main__':
     loc_value = None
     while not loc_value:
         loc_value = get_location_data()
-    temperature_type = input('Please, choose temperature unit (Celsius or Fahrenheit): ')
-    get_info(loc_value, temperature_type)
+    get_weather_table(loc_value)
