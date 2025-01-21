@@ -29,7 +29,7 @@ def get_info(location, temp_type) -> Dict:
         weather['description'] = current['condition']['text']
         weather['wind_speed_kmh'] = current['wind_kph']
         weather['humidity'] = current['humidity']
-    
+        print(os.popen(f"curl wttr.in/{location}").read())
     except requests.exceptions.RequestException as e:
         print(f"Error fetching the weather data: {e}")
     return weather
@@ -38,7 +38,7 @@ def get_weather_table(location):
     temp_type = input('Please, choose temperature unit (Celsius or Fahrenheit): ').strip().lower()
     
     if temp_type not in ['celsius', 'fahrenheit']:
-        print("Nothing inputed. Defaulting to Celsius.")
+        print("Nothing inputed. Defaulting to Celsius. \n")
         temp_type = 'celsius'
     
     weather_dict = get_info(location, temp_type)
@@ -47,7 +47,7 @@ def get_weather_table(location):
 
 def print_weather(weather, location, temp_type):
     print("\n" + "="*30)
-    print(f"Weather for {location.title()}:")
+    print(f"Short info for weather in {location.title()}:")
     print("="*30)
     print(f"Temperature: {weather['temperature']}°{'C' if temp_type == 'celsius' else 'F'}")
     print(f"Description: {weather['description']}")
