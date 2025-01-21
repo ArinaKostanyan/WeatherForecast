@@ -12,7 +12,7 @@ api_key = os.getenv('WEATHER_API_KEY')
 
 # api_key= '9971cbdd16234d21a21153804251901' # Set up your API key:
 
-def get_info(location, temp_type='celsius') -> Dict:
+def get_info(location, temp_type) -> Dict:
     url = f'https://api.weatherapi.com/v1/current.json?q={location}&key={api_key}'
     weather = {}
     try:
